@@ -70,6 +70,28 @@ function enterRoom() {
   $("room-code-show").textContent = state.roomCode;
   showScreen("room");
   buildColorPalette();
+  setMobileTab("canvas");
+  setupMobileTabs();
+}
+
+/* ---------- MOBILE TABS ---------- */
+let activeMobileTab = "canvas";
+
+function setupMobileTabs() {
+  document.querySelectorAll(".mobile-tabs .tab").forEach((btn) => {
+    btn.onclick = () => setMobileTab(btn.dataset.tab);
+  });
+}
+
+function setMobileTab(tab) {
+  activeMobileTab = tab;
+  document.querySelectorAll(".mobile-tabs .tab").forEach((b) => {
+    b.classList.toggle("active", b.dataset.tab === tab);
+  });
+  document.querySelector(".canvas-area").classList.toggle("mobile-active", tab === "canvas");
+  document.querySelector(".players-panel").classList.toggle("mobile-active", tab === "players");
+  document.querySelector(".chat-panel").classList.toggle("mobile-active", tab === "chat");
+  if (tab === "chat") $("tab-chat-badge").classList.add("hidden");
 }
 
 $("btn-leave").onclick = () => location.reload();
@@ -285,6 +307,7 @@ socket.on("tick", ({ timer }) => {
 let lastPlayers = [];
 function renderPlayers(players) {
   lastPlayers = players;
+  $("tab-players-count").textContent = players.length;
   const ul = $("players-list");
   ul.innerHTML = "";
   [...players]
@@ -392,6 +415,9 @@ function addChatLine(msg) {
   log.appendChild(li);
   log.scrollTop = log.scrollHeight;
   while (log.children.length > 200) log.removeChild(log.firstChild);
+  if (activeMobileTab !== "chat" && window.matchMedia("(max-width: 900px)").matches) {
+    $("tab-chat-badge").classList.remove("hidden");
+  }
 }
 
 function escapeHtml(s) {

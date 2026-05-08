@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0f1020" />
   <title>SketchWars - Draw & Guess</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -48,6 +50,12 @@
           <div class="room-code">Room: <span id="room-code-show"></span></div>
         </div>
       </header>
+
+      <nav class="mobile-tabs">
+        <button class="tab active" data-tab="canvas">Draw</button>
+        <button class="tab" data-tab="players">Players <span id="tab-players-count" class="tab-count">0</span></button>
+        <button class="tab" data-tab="chat">Chat <span id="tab-chat-badge" class="tab-badge hidden"></span></button>
+      </nav>
 
       <main class="game-grid">
         <aside class="players-panel">
