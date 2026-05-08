@@ -149,6 +149,21 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   margin-top: 10px;
 }
 
+.credit {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+.credit strong {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
 /* GAME LAYOUT */
 #screen-room { flex-direction: column; }
 
