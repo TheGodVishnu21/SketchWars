@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SketchWars - Draw & Guess</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- LOBBY SCREEN -->
+    <section id="screen-home" class="screen active">
+      <div class="home-card">
+        <h1 class="logo">Sketch<span>Wars</span></h1>
+        <p class="tagline">Draw. Guess. Roast your friends.</p>
+
+        <label>Your name</label>
+        <input id="input-name" maxlength="16" placeholder="Enter nickname" />
+
+        <div class="row">
+          <button id="btn-create" class="primary">Create Room</button>
+          <span class="or">or</span>
+          <input id="input-code" maxlength="5" placeholder="ROOM" />
+          <button id="btn-join" class="secondary">Join</button>
+        </div>
+
+        <label>Difficulty</label>
+        <select id="select-difficulty">
+          <option value="easy">Easy (short words)</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard (phrases)</option>
+        </select>
+
+        <p id="home-error" class="error"></p>
+      </div>
+    </section>
+
+    <!-- GAME SCREEN -->
+    <section id="screen-room" class="screen">
+      <header class="topbar">
+        <div class="brand">Sketch<span>Wars</span></div>
+        <div class="word-area">
+          <div id="word-display" class="word-display"></div>
+          <div id="round-info" class="round-info"></div>
+        </div>
+        <div class="timer-area">
+          <div id="timer" class="timer">--</div>
+          <div class="room-code">Room: <span id="room-code-show"></span></div>
+        </div>
+      </header>
+
+      <main class="game-grid">
+        <aside class="players-panel">
+          <h3>Players</h3>
+          <ul id="players-list"></ul>
+          <button id="btn-start" class="primary hidden">Start Game</button>
+          <button id="btn-leave" class="ghost">Leave</button>
+        </aside>
+
+        <section class="canvas-area">
+          <canvas id="canvas" width="800" height="600"></canvas>
+          <div id="draw-toolbar" class="toolbar hidden">
+            <div class="colors" id="colors"></div>
+            <label>Size</label>
+            <input id="brush-size" type="range" min="2" max="40" value="6" />
+            <button id="btn-eraser" class="tool">Eraser</button>
+            <button id="btn-undo" class="tool">Undo</button>
+            <button id="btn-clear" class="tool danger">Clear</button>
+          </div>
+          <div id="canvas-overlay" class="overlay hidden"></div>
+        </section>
+
+        <aside class="chat-panel">
+          <h3>Chat & Guesses</h3>
+          <ul id="chat-log"></ul>
+          <form id="chat-form">
+            <input id="chat-input" placeholder="Type your guess..." maxlength="200" autocomplete="off" />
+            <button class="primary">Send</button>
+          </form>
+        </aside>
+      </main>
+
+      <!-- WORD PICK MODAL -->
+      <div id="modal-wordpick" class="modal hidden">
+        <div class="modal-card">
+          <h2>Pick a word to draw</h2>
+          <div id="word-choices" class="word-choices"></div>
+          <p class="muted">Auto-pick after 15s</p>
+        </div>
+      </div>
+
+      <!-- ROUND END MODAL -->
+      <div id="modal-roundend" class="modal hidden">
+        <div class="modal-card">
+          <h2 id="roundend-title">Round Over</h2>
+          <p>Word was: <strong id="roundend-word"></strong></p>
+          <ul id="roundend-scores"></ul>
+        </div>
+      </div>
+
+      <!-- GAME END MODAL -->
+      <div id="modal-gameend" class="modal hidden">
+        <div class="modal-card">
+          <h2>Game Over</h2>
+          <ol id="gameend-ranking" class="ranking"></ol>
+          <button id="btn-playagain" class="primary">Play Again</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "easy": [
+    "apple", "ball", "cat", "dog", "egg", "fish", "tree", "sun", "moon", "star",
+    "car", "bus", "house", "book", "chair", "table", "phone", "shoe", "hat", "key",
+    "fire", "rain", "cloud", "leaf", "fork", "spoon", "cup", "bed", "door", "eye",
+    "ear", "nose", "hand", "foot", "smile", "heart", "ring", "ship", "kite", "drum"
+  ],
+  "medium": [
+    "elephant", "guitar", "computer", "rainbow", "mountain", "bicycle", "umbrella",
+    "sandwich", "telescope", "volcano", "octopus", "dragon", "castle", "robot",
+    "pizza", "burger", "samosa", "rocket", "pirate", "ninja", "wizard", "zombie",
+    "vampire", "mermaid", "unicorn", "snowman", "skeleton", "scarecrow", "lighthouse",
+    "windmill", "treehouse", "spaceship", "submarine", "helicopter", "tornado",
+    "waterfall", "campfire", "fountain", "snowflake", "popcorn"
+  ],
+  "hard": [
+    "procrastination", "synchronization", "claustrophobia", "metamorphosis",
+    "photosynthesis", "constellation", "kaleidoscope", "encyclopedia",
+    "schizophrenia", "embarrassment", "philosophy", "democracy", "gravity",
+    "evolution", "revolution", "civilization", "imagination", "communication",
+    "transportation", "investigation", "stage fright", "writer's block",
+    "midlife crisis", "déjà vu", "fashion week", "rush hour", "second thought",
+    "sixth sense", "déjà vu", "lost in translation"
+  ]
+}
